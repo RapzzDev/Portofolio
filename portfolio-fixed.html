@@ -481,34 +481,161 @@
     margin: 0 0 4px;
     color: #e4c68b;
     font-size: 19px;
+/* PREMIUM KTP CARD */
+
+.premium-card-container {
+    width: min(540px, 100%);
+    margin: 40px auto 20px;
+    perspective: 1400px;
 }
 
-.premium-back-header p {
-    margin: 0;
-    color: #a99a7c;
+.premium-flip-card {
+    width: 100%;
+    aspect-ratio: 1.586;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .8s ease;
+    cursor: pointer;
+}
+
+.premium-flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.premium-card-face {
+    position: absolute;
+    inset: 0;
+    padding: 20px 24px;
+    overflow: hidden;
+    border: 1px solid #b99a60;
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at top right, #393020, transparent 50%),
+        linear-gradient(135deg, #191919, #050505);
+    color: #eee;
+    box-shadow: 0 12px 35px rgba(0,0,0,.4);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    text-align: left;
+}
+
+/* FRONT */
+
+.premium-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.premium-card-top,
+.premium-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.premium-card-tag {
+    color: #c9aa70;
     font-size: 9px;
     letter-spacing: 2px;
 }
 
-.premium-about {
-    margin: 0;
-    color: #c9c3b7;
-    font-size: 10px;
-    line-height: 1.5;
+.premium-card-logo {
+    color: #d4b77e;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.premium-card-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.premium-card-main {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.premium-card-photo {
+    width: 115px;
+    height: 115px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #c9aa70;
+    padding: 3px;
+}
+
+.premium-card-name {
+    color: #e4c68b;
+    font-size: 32px;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.premium-card-country {
+    color: #aaa;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.premium-card-motto {
+    color: #ddd;
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 14px;
+}
+
+.premium-card-bottom {
+    border-top: 1px solid #51432d;
+    padding-top: 10px;
+}
+
+.premium-card-bottom span {
+    color: #a89570;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+/* BACK */
+
+.premium-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.premium-back-header {
+    display: flex;
+    align-items: center;
     gap: 12px;
+    border-bottom: 1px solid #51432d;
+    padding-bottom: 8px;
+}
+
+.premium-back-photo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #c9aa70;
+}
+
+.premium-back-header h3 {
+    color: #e4c68b;
+    font-size: 17px;
+    margin: 3px 0;
+}
+
+.premium-back-header p {
+    color: #a99a7c;
+    font-size: 8px;
+    letter-spacing: 1px;
 }
 
 .premium-card-group h4 {
-    margin: 0 0 7px;
     color: #d5b477;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .premium-card-tags {
@@ -518,21 +645,31 @@
 }
 
 .premium-card-tags span {
-    padding: 4px 7px;
     border: 1px solid #51432d;
     border-radius: 5px;
-    color: #d5d0c5;
+    padding: 4px 7px;
+    color: #ddd;
+    font-size: 8px;
+}
+
+.premium-learning-text {
+    color: #ddd;
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.premium-about {
+    color: #c9c3b7;
     font-size: 9px;
 }
 
 .premium-card-quote {
-    margin: auto 0 0;
-    padding-top: 8px;
-    border-top: 1px solid #51432d;
     color: #d9bd88;
-    font-size: 11px;
+    font-size: 10px;
     font-style: italic;
     text-align: center;
+    border-top: 1px solid #51432d;
+    padding-top: 7px;
 }
 
 .flip-hint {
@@ -543,41 +680,47 @@
 }
 
 /* MOBILE */
+
 @media (max-width: 650px) {
-    .premium-card-container {
-        margin-top: 30px;
-    }
-
-    .premium-flip-card {
-        aspect-ratio: auto;
-        min-height: 370px;
-    }
-
     .premium-card-face {
-        padding: 17px;
-        border-radius: 14px;
+        padding: 13px;
+    }
+
+    .premium-card-main {
+        gap: 12px;
     }
 
     .premium-card-photo {
-        width: 78px;
-        height: 78px;
+        width: 82px;
+        height: 82px;
     }
 
     .premium-card-name {
-        font-size: 26px;
+        font-size: 23px;
+    }
+
+    .premium-card-motto {
+        font-size: 9px;
     }
 
     .premium-back-header h3 {
-        font-size: 17px;
+        font-size: 13px;
     }
 
     .premium-card-tags span {
-        font-size: 8px;
-        padding: 4px 5px;
+        font-size: 7px;
+        padding: 3px 5px;
     }
 
-    .premium-card-group h4 {
-        font-size: 9px;
+    .premium-learning-text,
+    .premium-about {
+        font-size: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .premium-flip-card {
+        transition: none;
     }
 }
 
