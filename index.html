@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapka Pradithiya | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #101010;
+      --surface: #191919;
+      --surface-light: #222222;
+      --text: #eeeeee;
+      --muted: #999999;
+      --line: #343434;
+      --accent: #d0d0d0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16, 16, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      min-height: 75px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      display: block;
+      padding: 10px 15px;
+      color: var(--muted);
+      font-size: 13px;
+      border-radius: 7px;
+      transition: 0.3s;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--text);
+      background: var(--surface-light);
+    }
+
+    /* HERO */
+
+    section {
+      padding: 100px 0;
+      scroll-margin-top: 75px;
+    }
+
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(45px, 8vw, 85px);
+      font-weight: 500;
+      line-height: 1.05;
+      max-width: 800px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-top: 25px;
+      font-size: 15px;
+    }
+
+    .hero-button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 13px 22px;
+      border: 1px solid #777;
+      border-radius: 5px;
+      width: fit-content;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .hero-button:hover {
+      background: white;
+      color: black;
+    }
+
+    /* GENERAL SECTION */
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 550px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin-top: 35px;
+    }
+
+    /* PROFILE */
+
+    .profile-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 45px;
+    }
+
+    .profile-content p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .profile-details {
+      display: grid;
+      gap: 18px;
+    }
+
+    .detail {
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .detail strong {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* DIGITAL ID */
+
+    .identity-section {
+      text-align: center;
+    }
+
+    .identity-section .section-description {
+      margin: auto;
+    }
+
+    .card-container {
+      width: min(540px, 100%);
+      margin: 55px auto 0;
+      perspective: 1200px;
+    }
+
+    .flip-card {
+      width: 100%;
+      aspect-ratio: 1.585;
+      cursor: pointer;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(.2,.75,.2,1);
+    }
+
+    .flip-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      border: 1px solid #555;
+      border-radius: 15px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      text-align: left;
+      background: #1b1b1b;
+    }
+
+    .card-front {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.85)),
+        #303030;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #ccc;
+    }
+
+    .card-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+    }
+
+    .card-person {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .card-photo {
+      width: 105px;
+      height: 125px;
+      object-fit: cover;
+      border: 1px solid #777;
+      background: #444;
+      border-radius: 5px;
+    }
+
+    .card-info h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 23px;
+      margin-bottom: 9px;
+    }
+
+    .card-info p {
+      font-size: 10px;
+      color: #c4c4c4;
+      margin-top: 6px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      border-top: 1px solid #666;
+      padding-top: 12px;
+    }
+
+    .card-bottom span {
+      font-size: 9px;
+      color: #bbb;
+      letter-spacing: 1px;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(145deg, #252525, #111);
+    }
+
+    .back-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-header h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+    }
+
+    .back-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .back-content img {
+      width: 95px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid #777;
+    }
+
+    .back-text p {
+      font-size: 11px;
+      line-height: 1.8;
+      color: #bbb;
+    }
+
+    .back-footer {
+      border-top: 1px solid #555;
+      padding-top: 12px;
+      font-size: 9px;
+      color: #aaa;
+      letter-spacing: 1px;
+    }
+
+    .flip-hint {
+      margin-top: 22px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      margin-top: 40px;
+      padding: 30px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 14px;
+      border-bottom: 1px solid #888;
+      padding-bottom: 5px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 650px) {
+      nav {
+        flex-direction: column;
+        padding: 15px 0;
+        gap: 12px;
+      }
+
+      .nav-menu {
+        width: 100%;
+        justify-content: center;
+        gap: 3px;
+      }
+
+      .nav-menu a {
+        padding: 9px 10px;
+        font-size: 11px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .profile-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .section-title {
+        font-size: 34px;
+      }
+
+      .card-front,
+      .card-back {
+        padding: 13px;
+      }
+
+      .card-photo {
+        width: 75px;
+        height: 95px;
+      }
+
+      .card-info h3 {
+        font-size: 17px;
+      }
+
+      .card-info p,
+      .back-text p {
+        font-size: 8px;
+      }
+
+      .back-content img {
+        width: 70px;
+        height: 85px;
+      }
+
+      .card-logo {
+        font-size: 15px;
+      }
+
+      .back-header h3 {
+        font-size: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .flip-card {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="container">
+      <a href="#home" class="logo">RP.</a>
+
+      <ul class="nav-menu">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#identity">Identity</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HOME -->
+    <section class="container hero" id="home">
+      <div class="eyebrow">Personal Portfolio</div>
+
+      <h1>Rapka<br>Pradithiya.</h1>
+
+      <p>
+        Welcome to my personal space.
+        A place to explore my identity, interests,
+        and journey in technology.
+      </p>
+
+      <a href="#profile" class="hero-button">
+        Explore Portfolio →
+      </a>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="container" id="profile">
+      <div class="eyebrow">01 — About Me</div>
+
+      <h2 class="section-title">Personal Profile</h2>
+
+      <p class="section-description">
+        Get to know more about me, my interests,
+        and the things I am currently learning.
+      </p>
+
+      <div class="divider"></div>
+
+      <div class="profile-content">
+        <p>
+          Hello! My name is Rapka Pradithiya.
+          I am interested in programming, technology,
+          artificial intelligence, gaming, psychology,
+          and creative design.
+          <br><br>
+          I enjoy learning new things and developing
+          my skills step by step.
+        </p>
+
+        <div class="profile-details">
+          <div class="detail">
+            <span>Full Name</span>
+            <strong>Rapka Pradithiya</strong>
+          </div>
+
+          <div class="detail">
+            <span>Occupation</span>
+            <strong>Student</strong>
+          </div>
+
+          <div class="detail">
+            <span>Interests</span>
+            <strong>Programming & Technology</strong>
+          </div>
+
+          <div class="detail">
+            <span>Learning</span>
+            <strong>Python, JavaScript & English</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIGITAL ID -->
+    <section class="container identity-section" id="identity">
+      <div class="eyebrow">02 — Digital Identity</div>
+
+      <h2 class="section-title">My Digital ID</h2>
+
+      <p class="section-description">
+        A digital identity card that represents
+        my personal profile.
+        Click the card to flip it.
+      </p>
+
+      <div class="card-container">
+
+        <div class="flip-card" id="flipCard"
+             role="button"
+             tabindex="0"
+             aria-label="Balik kartu identitas"
+             aria-pressed="false">
+
+          <!-- FRONT -->
+          <div class="card-face card-front">
+
+            <div class="card-top">
+              <div class="card-label">
+                DIGITAL IDENTITY CARD
+              </div>
+
+              <div class="card-logo">RP.</div>
+            </div>
+
+            <div class="card-person">
+              <img
+                src="assets/foto-depan.jpg"
+                alt="Foto profil depan"
+                class="card-photo"
+              >
+
+              <div class="card-info">
+                <h3>Rapka Pradithiya</h3>
+                <p>IDENTITY : RP-001</p>
+                <p>STATUS : STUDENT</p>
+                <p>COUNTRY : INDONESIA</p>
+              </div>
+            </div>
+
+            <div class="card-bottom">
+              <span>PERSONAL IDENTIFICATION</span>
+              <span>FRONT SIDE</span>
+            </div>
+
+          </div>
+
+          <!-- BACK -->
+          <div class="card-face card-back">
+
+            <div class="back-header">
+              <h3>Personal Information</h3>
+              <span class="card-logo">RP.</span>
+            </div>
+
+            <div class="back-content">
+              <img
+                src="assets/foto-belakang.jpg"
+                alt="Foto profil belakang"
+              >
+
+              <div class="back-text">
+                <p>NAME : Rapka Pradithiya</p>
+                <p>FIELD : Technology</p>
+                <p>INTEREST : Programming</p>
+                <p>GOAL : Continuous Growth</p>
+              </div>
+            </div>
+
+            <div class="back-footer">
+              DIGITAL IDENTITY — BACK SIDE
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <p class="flip-hint">
+        ↻ Click the card to see the other side
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="container" id="contact">
+      <div class="eyebrow">03 — Get In Touch</div>
+
+      <h2 class="section-title">Contact</h2>
+
+      <p class="section-description">
+        Feel free to contact me through the information below.
+      </p>
+
+      <div class="contact-box">
+        <h3>Let's Connect.</h3>
+
+        <p>
+          You can reach me through my email.
+        </p>
+
+        <a href="mailto:emailkamu@example.com">
+          emailkamu@example.com →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Rafka Pradithiya. All Rights Reserved.
+  </footer>
+
+  <script>
+    // DIGITAL ID FLIP
+
+    const flipCard = document.getElementById("flipCard");
+
+    function flipIdentityCard() {
+      const isFlipped = flipCard.classList.toggle("flipped");
+
+      flipCard.setAttribute(
+        "aria-pressed",
+        String(isFlipped)
+      );
+    }
+
+    flipCard.addEventListener("click", flipIdentityCard);
+
+    flipCard.addEventListener("keydown", function(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        flipIdentityCard();
+      }
+    });
+
+    // NAVIGATION ACTIVE STATE
+
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function() {
+        navLinks.forEach(item => item.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+  </script>
+
+</body>
+  </html>
