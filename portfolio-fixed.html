@@ -630,6 +630,155 @@
     font-size: 8px;
     letter-spacing: 1px;
 }
+/* PREMIUM KTP CARD */
+
+.premium-card-container {
+    width: min(540px, 100%);
+    margin: 40px auto 20px;
+    perspective: 1400px;
+}
+
+.premium-flip-card {
+    width: 100%;
+    aspect-ratio: 1.586;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .8s ease;
+    cursor: pointer;
+}
+
+.premium-flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.premium-card-face {
+    position: absolute;
+    inset: 0;
+    padding: 20px 24px;
+    overflow: hidden;
+    border: 1px solid #b99a60;
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at top right, #393020, transparent 50%),
+        linear-gradient(135deg, #191919, #050505);
+    color: #eee;
+    box-shadow: 0 12px 35px rgba(0,0,0,.4);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    text-align: left;
+}
+
+/* FRONT */
+
+.premium-card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.premium-card-top,
+.premium-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.premium-card-tag {
+    color: #c9aa70;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.premium-card-logo {
+    color: #d4b77e;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.premium-card-main {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.premium-card-photo {
+    width: 115px;
+    height: 115px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #c9aa70;
+    padding: 3px;
+}
+
+.premium-card-name {
+    color: #e4c68b;
+    font-size: 32px;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.premium-card-country {
+    color: #aaa;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.premium-card-motto {
+    color: #ddd;
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 14px;
+}
+
+.premium-card-bottom {
+    border-top: 1px solid #51432d;
+    padding-top: 10px;
+}
+
+.premium-card-bottom span {
+    color: #a89570;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+/* BACK */
+
+.premium-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.premium-back-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #51432d;
+    padding-bottom: 8px;
+}
+
+.premium-back-photo {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #c9aa70;
+}
+
+.premium-back-header h3 {
+    color: #e4c68b;
+    font-size: 17px;
+    margin: 3px 0;
+}
+
+.premium-back-header p {
+    color: #a99a7c;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
 
 .premium-card-group h4 {
     color: #d5b477;
