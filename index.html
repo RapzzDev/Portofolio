@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -857,18 +858,57 @@
     });
 
 
-    // NAVIGATION ACTIVE STATE
+    // NAVIGATION ACTIVE STATE ON SCROLL
 
     const navLinks = document.querySelectorAll(".nav-menu a");
 
+    const pageSections = document.querySelectorAll(
+      "main section[id]"
+    );
+
+    function updateActiveNavigation() {
+      const activationPoint =
+        window.scrollY + document.querySelector("header").offsetHeight +
+        window.innerHeight * 0.3;
+
+      let currentSection = "home";
+
+      pageSections.forEach(section => {
+        if (section.offsetTop <= activationPoint) {
+          currentSection = section.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + currentSection) {
+          link.classList.add("active");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveNavigation, {
+      passive: true
+    });
+
+    window.addEventListener("load", updateActiveNavigation);
+
+    window.addEventListener("resize", updateActiveNavigation);
+
+    // Update active menu when a navigation link is clicked
     navLinks.forEach(link => {
       link.addEventListener("click", function() {
+        const targetId = this.getAttribute("href").substring(1);
 
         navLinks.forEach(item => {
           item.classList.remove("active");
         });
 
         this.classList.add("active");
+
+        // Recheck after the browser starts scrolling
+        setTimeout(updateActiveNavigation, 500);
       });
     });
 
